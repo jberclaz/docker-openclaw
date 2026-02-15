@@ -1,0 +1,16 @@
+# Docker
+.dockerignore
+
+# Environment
+.env
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Credentials (if any local overrides)
+credentials/

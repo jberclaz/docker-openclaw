@@ -1,0 +1,16 @@
+services:
+  app:
+    build:
+      context: .
+      args:
+        CACHEBUST: ${CACHEBUST:-1}
+    ports:
+      - "18789:18789"
+    volumes:
+      - openclaw_data:/home/ubuntu
+    stdin_open: true
+    tty: true
+
+volumes:
+  openclaw_data:
+    name: openclaw_data
