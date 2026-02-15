@@ -1,6 +1,24 @@
 # OpenClaw Docker
 
+[![Docker Image Size](https://img.shields.io/docker/image-size/yourusername/docker-openclaw/latest?style=flat)](https://github.com/yourusername/docker-openclaw/pkgs/container/docker-openclaw)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![GitHub Issues](https://img.shields.io/github/issues/yourusername/docker-openclaw.svg)](https://github.com/yourusername/docker-openclaw/issues)
+
 Run [OpenClaw](https://github.com/openclaw/openclaw) in a Docker container for enhanced security and isolation.
+
+## Quick Start (One-Liner)
+
+The image is automatically built and pushed to GitHub Container Registry on every commit. Run:
+
+```bash
+docker run -d -p 18789:18789 --name openclaw ghcr.io/yourusername/docker-openclaw:latest
+```
+
+Then configure:
+
+```bash
+docker exec -it openclaw openclaw configure
+```
 
 ## Getting Started
 
@@ -168,5 +186,6 @@ docker compose up -d
 ├── Dockerfile           # Container image definition
 ├── docker-compose.yml  # Container orchestration
 ├── start.sh           # Container startup script
+├── LICENSE            # MIT License
 └── README.md          # This file
 ```
