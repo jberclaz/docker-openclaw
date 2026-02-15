@@ -1,6 +1,6 @@
 # OpenClaw Docker
 
-[![Docker Image Size](https://img.shields.io/docker/image-size/jberclaz/docker-openclaw/latest?style=flat)](https://github.com/jberclaz/docker-openclaw/pkgs/container/docker-openclaw)
+[![Docker Image Size](https://img.shields.io/docker/image-size/ghcr.io/jberclaz/docker-openclaw/latest?style=flat)](https://github.com/jberclaz/docker-openclaw/pkgs/container/docker-openclaw)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![GitHub Issues](https://img.shields.io/github/issues/jberclaz/docker-openclaw.svg)](https://github.com/jberclaz/docker-openclaw/issues)
 

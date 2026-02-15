@@ -20,6 +20,10 @@ RUN curl -LO https://github.com/steipete/gogcli/releases/download/v0.10.0/gogcli
     mv gog /usr/local/bin/ && \
     rm gogcli_0.10.0_linux_amd64.tar.gz
 
+RUN wget -q https://github.com/pimalaya/himalaya/releases/download/v1.1.0/himalaya.x86_64-linux.tgz && \
+    tar xzf himalaya.x86_64-linux.tgz -C /usr/local/bin/ himalaya && \
+    rm himalaya.x86_64-linux.tgz
+
 ARG CACHEBUST=1
 RUN npm i -g openclaw
 
