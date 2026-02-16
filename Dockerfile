@@ -31,13 +31,17 @@ FROM ubuntu:24.04
 
 COPY --from=builder /usr/local/bin/gog /usr/local/bin/
 COPY --from=builder /usr/local/bin/himalaya /usr/local/bin/
-COPY --from=builder /usr/bin/google-chrome-stable /usr/bin/google-chrome-stable
-COPY --from=builder /usr/lib/chromium-browser /usr/lib/chromium-browser 2>/dev/null || true
-
+COPY --from=builder /usr/bin/google-chrome-stable /usr/bin/
+COPY --from=builder /opt/google/chrome /opt/google/chrome
 COPY --from=builder /usr/lib/node_modules /usr/lib/node_modules
-COPY --from=builder /usr/local/lib/node_modules /usr/local/lib/node_modules
-COPY --from=builder /usr/local/bin/npm /usr/local/bin/npm
-COPY --from=builder /usr/local/bin/node /usr/local/bin/node
+COPY --from=builder /usr/lib/node_modules/npm /usr/lib/node_modules/npm
+COPY --from=builder /usr/bin/node /usr/bin/
+COPY --from=builder /usr/bin/npm /usr/bin/
+
+RUN for pkg in openclaw opencode-ai; do \
+      bin=$(node -p "require('/usr/lib/node_modules/$pkg/package.json').bin['$pkg']") && \
+      ln -sf "/usr/lib/node_modules/$pkg/$bin" "/usr/bin/$pkg"; \
+    done
 
 RUN apt-get update && apt-get install -y \
     libglib2.0-0 libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 \
