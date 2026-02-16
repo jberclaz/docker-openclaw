@@ -6,20 +6,6 @@
 
 Run [OpenClaw](https://github.com/openclaw/openclaw) in a Docker container for enhanced security and isolation.
 
-## Quick Start (One-Liner)
-
-The image is automatically built and pushed to GitHub Container Registry on every commit. Run:
-
-```bash
-docker run -d -p 18789:18789 --name openclaw ghcr.io/jberclaz/docker-openclaw:latest
-```
-
-Then configure:
-
-```bash
-docker exec -it openclaw openclaw configure
-```
-
 ## Getting Started
 
 ### Prerequisites
@@ -36,29 +22,23 @@ docker exec -it openclaw openclaw configure
    cd docker-openclaw
    ```
 
-2. **Start OpenClaw**
+2. **First run (interactive setup)**
+
+   On first run, you need to configure OpenClaw. Start an interactive terminal:
+
+   ```bash
+   docker compose run --rm openclaw bash
+   ```
+
+   The setup wizard will start automatically. Follow the prompts to set up your API keys and preferences. When done, exit the container.
+
+3. **Start OpenClaw**
 
    ```bash
    docker compose up -d
    ```
 
-4. **Connect to the container**
-
-   ```bash
-docker compose exec openclaw bash
-   ```
-
-5. **Configure OpenClaw**
-
-   Inside the container, configure OpenClaw:
-
-   ```bash
-   openclaw configure
-   ```
-
-   Follow the prompts to set up your API keys and preferences.
-
-6. **Access OpenClaw**
+4. **Access OpenClaw**
 
    OpenClaw runs on port 18789. Connect your OpenClaw client to:
    ```
