@@ -1,9 +1,6 @@
 services:
-  app:
-    build:
-      context: .
-      args:
-        CACHEBUST: ${CACHEBUST:-1}
+  openclaw:
+    image: ghcr.io/jberclaz/docker-openclaw:latest
     ports:
       - "18789:18789"
     volumes:

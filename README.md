@@ -36,13 +36,7 @@ docker exec -it openclaw openclaw configure
    cd docker-openclaw
    ```
 
-2. **Build the container**
-
-   ```bash
-   docker compose build
-   ```
-
-3. **Start OpenClaw**
+2. **Start OpenClaw**
 
    ```bash
    docker compose up -d
@@ -51,7 +45,7 @@ docker exec -it openclaw openclaw configure
 4. **Connect to the container**
 
    ```bash
-   docker compose exec app bash
+docker compose exec openclaw bash
    ```
 
 5. **Configure OpenClaw**
@@ -76,7 +70,7 @@ docker exec -it openclaw openclaw configure
 After initial setup, your configuration is stored in the Docker volume. To modify settings:
 
 ```bash
-docker compose exec app bash
+docker compose exec openclaw bash
 cd ~/.openclaw
  nano openclaw.json
 ```
@@ -148,14 +142,12 @@ Running OpenClaw in Docker provides:
 
 ## Updating OpenClaw
 
-To update OpenClaw to the latest version, rebuild the container with a new cachebust value:
+To update OpenClaw to the latest version, pull the latest image and recreate the container:
 
 ```bash
-CACHEBUST=$(date +%s) docker compose build
+docker compose pull
 docker compose up -d
 ```
-
-The `CACHEBUST` argument forces Docker to re-execute the `npm i -g openclaw` step, installing the latest version.
 
 ## Troubleshooting
 
@@ -168,14 +160,14 @@ docker compose logs
 ### Check if Chrome is running
 
 ```bash
-docker compose exec app curl http://127.0.0.1:9222/json/version
+docker compose exec openclaw curl http://127.0.0.1:9222/json/version
 ```
 
 ### Rebuild from scratch
 
 ```bash
 docker compose down -v
-docker compose build --no-cache
+docker compose pull
 docker compose up -d
 ```
 
